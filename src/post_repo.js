@@ -1,6 +1,7 @@
 import Git from 'simple-git/promise'
 import fs from 'fs'
 import path from 'path';
+import mkdirp from 'mkdirp'
 
 async function getNewCommit(repoPath, localPath) {
     if (!path.isAbsolute(localPath)) {
@@ -14,23 +15,24 @@ async function getNewCommit(repoPath, localPath) {
     const projectPath = getProjectPath(repoPath, localPath)
 
     // dir not found, try to create it
+    if (!fs.existsSync(localPath)) {
+        console.info("making dir: ", localPath)
+        mkdirp.sync(localPath)
+    }
+
+    // project not found, to clone
     if (!fs.existsSync(projectPath)) {
-        fs.mkdirSync(projectPath)
+        console.log('Clone: ', repoPath, 'at', localPath)
+        await Git(localPath).clone(repoPath)
+        return
     }
 
     const git = Git(projectPath)
+
     // check if the localPath is a repo path
     let isRepo = await git.checkIsRepo()
     if (!isRepo) {
-
-        const files = fs.readdirSync(projectPath)
-        if (files.length != 0) {
-            throw `Dir: ${projectPath} is not a clean dir!`
-        }
-
-        console.info('Clone repo from:', repoPath, 'at: ', projectPath)
-        await git.clone(repoPath)
-        return
+        throw `Dir: ${projectPath} is not a clean dir! Maybe you should remove it!`
     }
 
     console.info('Pull master branch from remote')
@@ -46,4 +48,7 @@ function getProjectPath(repoPath, localPath) {
 }
 
 
-getNewCommit('git@github.com:hauter/markdown-posts.git', 'D:/lc/test-git')
+export default {
+    getNewCommit,
+    getProjectPath
+}
