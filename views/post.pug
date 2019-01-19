@@ -6,13 +6,22 @@ html
     script(src="/static/js/bootstrap.min.js")
     link(rel="stylesheet", href="/static/css/github.css")
     link(rel="stylesheet", href="/static/css/style.css")
+    script(src="/static/js/index.js")
+
 
   body
 
     .container
-      .navbar.navbar-light.bg-light
-        a.navbar-brand
-          |Home
+      .navbar.navbar-dark.bg-dark.navbar-expand-lg.text-white
+        a.navbar-brand(href="/index") Home
+        button.navbar-toggler(type="button" data-toggler="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        div#navbarNav.collapse.navbar-collapse
+          .navbar-nav
+            a.nav-item.nav-link(href="/about") About
+            a.nav-item.nav-link(href="/posts") Post
+
+
       #markdown-content.col-12.card
         .card-body!= content
 
