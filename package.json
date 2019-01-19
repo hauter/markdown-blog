@@ -4,17 +4,17 @@
   "description": "simple blog ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "babel-node test.js",
     "start": "babel-node main.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-env": "^2.4.1",
-    "bootstrap": "^4.2.1",
     "express": "^4.16.4",
     "markdown": "^0.5.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "simple-git": "^1.107.0"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0"
