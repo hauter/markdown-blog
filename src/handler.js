@@ -1,9 +1,8 @@
 import { markdown } from 'markdown'
 import fs from 'fs'
-import config from 'config'
-import postRepo from './post_repo'
+import variable from './variable'
 
-const projectPath = postRepo.getProjectPath(config.get('posts').git, config.get('posts').localPath)
+const projectPath = variable.projectPath
 
 async function index(req, res) {
     res.redirect('/index')
@@ -11,7 +10,8 @@ async function index(req, res) {
 
 async function getPost(req, res) {
     // 获取文章路径，.md 可以忽略
-    let filePath = `${projectPath}/${req.path.replace("/posts/", "")}`
+    let filePath = `${projectPath}/${req.path}`
+
     if (!filePath.endsWith(".md")) {
         filePath += ".md"
     }
@@ -28,7 +28,12 @@ async function getPost(req, res) {
     res.render('post', { title: '文章', content: htmlContent });
 }
 
+async function listPosts(req, res) {
+    res.render('post_list', { title: '文章列表', posts_summaries: variable.postsSummaries });
+}
+
 export default {
     getPost,
-    index
+    index,
+    listPosts
 }
