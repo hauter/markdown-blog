@@ -1,4 +1,4 @@
-#markdown-content {
-    margin-top: 50px;
+#markdown-content, #posts-summaries {
+    margin-top: 30px;
     margin-bottom: 100px;
 }

@@ -21,9 +21,14 @@ html
             a.nav-item.nav-link(href="/about") About
             a.nav-item.nav-link(href="/posts") Posts
 
+      ul#posts-summaries.list-group
+        each item in posts_summaries
+          a(href=item.path).list-group-item.list-group-flush.list-group-item-action= item.title
+            .justify-content-between.mt-1
+              small.text-muted= item.path
 
-      #markdown-content.col-12.card
-        .card-body!= content
+
+
 
       
 

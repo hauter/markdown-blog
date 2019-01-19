@@ -1,21 +1,19 @@
 import express from 'express'
 import handler from './src/handler'
-import postRepo from './src/post_repo'
-import config from 'config'
+import variable from './src/variable'
+
 
 async function main() {
-    await init()
-
-    const projectPath = postRepo.getProjectPath(config.get('posts').git, config.get('posts').localPath)
-
+    await variable.init()
     const app = express()
 
     app.set('views', './views');
     app.set('view engine', 'pug');
     app.use('/static', express.static('static'));
-    app.use('/static', express.static(`${projectPath}/static`));
+    app.use('/static', express.static(`${variable.projectPath}/static`));
 
     app.get('/', handler.index)
+    app.get('/posts', handler.listPosts)
     app.get('/*', handler.getPost);
 
 
@@ -25,13 +23,6 @@ async function main() {
 }
 
 
-async function init() {
-    console.info("Init posts resources...")
-    const postsConfig = config.get('posts')
-
-    await postRepo.getNewCommit(postsConfig.git, postsConfig.localPath)
-    console.info("Finish init posts resources.")
-}
 
 
 main()
