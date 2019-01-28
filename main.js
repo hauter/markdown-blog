@@ -19,9 +19,10 @@ async function main() {
 
     app.get('/', handler.index)
     app.get('/posts', handler.listPosts)
+    app.get('/admin', adminHander.loginFilter, adminHander.adminHome)
     app.get('/admin/login', adminHander.loginPage)
     app.post('/admin/login', adminHander.doLogin)
-    app.post('/admin/posts/refresh', adminHander.refreshPosts)
+    app.post('/admin/posts/refresh', adminHander.loginFilter, adminHander.refreshPosts)
     app.get('/*', handler.getPost);
 
 
