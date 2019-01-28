@@ -2,5 +2,9 @@
     "posts": {
         "git": "git@github.com:hauter/markdown-posts.git",
         "localPath": "/Users/sun/lc/test-git"
+    },
+    "admin": {
+        "password": "123456",
+        "jwt-secret": "TLKqpKZd"
     }
 }
