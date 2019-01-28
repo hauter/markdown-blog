@@ -1,0 +1,18 @@
+html
+  head
+    title=title
+    link(rel="stylesheet", href="/static/css/bootstrap.min.css")
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
+    script(src="/static/js/bootstrap.min.js")
+    link(rel="stylesheet", href="/static/css/github.css")
+    link(rel="stylesheet", href="/static/css/style.css")
+
+  body
+
+    .container
+      h2 Login Admin
+      form(action="/admin/login" method="POST").col-6
+        .form-group
+          label(for="password-input").col-form-label Password:
+          input(type="password" name="password")#password-input.form-control
+        button(type="submit").btn.btn-primary Login
