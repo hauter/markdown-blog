@@ -1,6 +1,7 @@
 import config from 'config'
 import jwtUtil from './jwt_util'
 import postRepo from './post_repo'
+import variable from './variable'
 
 async function loginFilter(req, res, next) {
 
@@ -43,9 +44,7 @@ async function doLogin(req, res) {
 }
 
 async function refreshPosts(req, res) {
-    const postsConfig = config.get('posts')
-    await postRepo.getNewCommit(postsConfig.git, postsConfig.localPath)
-
+    await variable.init()
     res.send({message: "Done!"})
 }
 

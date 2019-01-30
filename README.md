@@ -5,10 +5,24 @@ This is a super simple blog system based on markdown article format.
 
 ## Quick Start
 
-### Download
+### Preparation
+1. Install Git
+
+```
+sudo apt-get install git
+```
+
+2. Install node and make sure the verion >= 11.8
+
+Look: [node home page](https://nodejs.org/en/) for installtion
+
+
+### Clone Project and install npm dependencies
 
 ```shell
 git clone git@github.com:hauter/markdown-blog.git
+cd markdown-blog
+npm install
 ```
 
 ### Post Git Repository
@@ -27,22 +41,25 @@ My Blog
 
 ### Configuration
 
-1. Edit the config file `config.json`, 
+Edit the config file `config/default.json`, 
 
 ```json
 {
     "post": {
         "git": "Your post repository url with ssh protocal",
         "localPath": "The location that you want to save the posts in the disk"
+    },
+    "admin": {
+        "password": "admin page login password",
+        "jwt-secret": "json web token secret"
     }
 }
 
 ```
 
-2. Start Server
+### Start Server
 
 ```
-npm install
 npm run start
 
 ```
