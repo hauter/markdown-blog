@@ -1,7 +1,7 @@
 {
     "posts": {
         "git": "git@github.com:hauter/markdown-posts.git",
-        "localPath": "/Users/sun/lc/test-git"
+        "localPath": "/var/markdown-posts"
     },
     "admin": {
         "password": "123456",
