@@ -4,6 +4,10 @@ import adminHander from './src/admin_handler'
 import variable from './src/variable'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import createHandler from 'github-webhook-handler'
+
+const githubHandler = createHandler({ path: '/webhook', secret: 'myhashsecret' })
+
 
 async function main() {
     await variable.init()

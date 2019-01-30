@@ -1,7 +1,8 @@
 {
-  "name": "cody-blog",
+  "name": "markdown-blog",
   "version": "1.0.0",
   "description": "simple blog ",
+  "repository": "https://github.com/hauter/markdown-blog.git",
   "main": "index.js",
   "scripts": {
     "test": "babel-node test.js",
@@ -15,6 +16,7 @@
     "config": "^3.0.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
+    "github-webhook-handler": "^0.7.1",
     "jsonwebtoken": "^8.4.0",
     "markdown": "^0.5.0",
     "mkdirp": "^0.5.1",
