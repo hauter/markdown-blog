@@ -2,3 +2,6 @@ node_modules/
 .babelrc
 package-lock.json
 .DS_Store
+*.tar.gz
+config/production.json
+deploy.sh

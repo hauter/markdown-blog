@@ -14,7 +14,7 @@ async function init() {
     console.info("Init posts resources...")
     const postsConfig = config.get('posts')
 
-    // await postRepo.getNewCommit(postsConfig.git, postsConfig.localPath)
+    await postRepo.getNewCommit(postsConfig.git, postsConfig.localPath)
     console.info("Finish init posts resources.")
 
     console.info("Looking up markdown files..")
